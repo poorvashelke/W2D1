@@ -63,3 +63,6 @@ class Board
   end
 
 end
+
+b = Board.new
+b.move_piece([0,0], [10,0])

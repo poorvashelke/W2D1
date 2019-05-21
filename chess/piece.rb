@@ -7,19 +7,26 @@ class Piece
   end
 
   def inspect
-    color
+    'P'
   end
   
 
 end
 
 
-class NullPiece < Piece
+# class NullPiece < Piece
 
-  def initialize
-    super
-    @color = null
-  end
+#   def initialize
+#     super
+#     @color = null
+#   end
 
   
-end
+# end
+
+# class Rook < Piece
+
+#   def initialize
+#     super
+#   end
+# end
