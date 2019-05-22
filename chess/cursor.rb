@@ -76,8 +76,43 @@ class Cursor
   end
 
   def handle_key(key)
+    case key
+    when :left
+      update_pos(MOVES[:left])
+    when :right
+      update_pos(MOVES[:right])
+    when :up
+      update_pos(MOVES[:up])
+    when :down
+      update_pos(MOVES[:down])
+    when :ctrl_c
+      Proces.exit
+    when :space
+      p cursor_pos
+      get_input
+    when :return
+      p cursor_pos
+      get_input
+    end
+
   end
 
-  def update_pos(diff)
+  def update_pos(diff) 
+    x, y = diff
+    a, b = cursor_pos
+    row = a + x
+    column = b + y
+    valid_pos?([row, column])
+
+    @cursor_pos = [row, column]
   end
+
+  def valid_pos?(pos)
+    x, y = pos
+    raise  OffBoardError if x.negative? || y.negative? || x > 7 || y > 7
+  end
+end
+
+class OffBoardError < StandardError
+  
 end
